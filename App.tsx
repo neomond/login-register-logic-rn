@@ -1,4 +1,3 @@
-import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import RootStack from './src/navigator/index';
 import {Provider} from 'react-redux';
@@ -11,7 +10,4 @@ const App = () => {
     </Provider>
   );
 };
-
 export default App;
-
-const styles = StyleSheet.create({});

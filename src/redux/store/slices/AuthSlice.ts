@@ -8,8 +8,8 @@ export type User = {
 interface initialStateType {
   user: User;
   token: string | undefined;
-  loading: boolean;
   secretInfo: string | undefined;
+  loading: boolean;
 }
 
 const initialState: initialStateType = {
@@ -29,18 +29,18 @@ const AuthSlice = createSlice({
     setEmail(state, action) {
       state.user.email = action.payload;
     },
-    setLoading(state, action) {
-      state.loading = action.payload;
-    },
     setToken(state, action) {
       state.token = action.payload;
     },
     setSecretInfo(state, action) {
       state.secretInfo = action.payload;
     },
+    setLoading(state, action) {
+      state.loading = action.payload;
+    },
   },
 });
 
 export default AuthSlice.reducer;
-export const {setEmail, setLoading, setToken, setSecretInfo} =
+export const {setEmail, setToken, setSecretInfo, setLoading} =
   AuthSlice.actions;
