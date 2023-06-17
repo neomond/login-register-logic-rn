@@ -9,6 +9,7 @@ import {
   setToken,
 } from '../slices/AuthSlice';
 import {api} from '../../../constants/api';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export const Auth = (payload: any) => {
   return async (dispatch: AppDispatch) => {
@@ -18,6 +19,13 @@ export const Auth = (payload: any) => {
         email: payload,
       });
       dispatch(setEmail(authPost.data.email));
+
+      //   foooor tooookeeeennnn
+      const token = authPost.data.token;
+      dispatch(setToken(token)); // i saved the token in the Redux store
+      await AsyncStorage.setItem('token', token); // then i saved it in asyncstorage
+
+      return authPost;
     } catch (error) {
       console.log('auth error', error);
     }
@@ -34,7 +42,7 @@ export const ConfirmUser = (payload: User) => {
         code: payload.code,
       });
       dispatch(setToken(authPost.data.token));
-      return authPost.data;
+      return authPost;
     } catch (error) {
       console.log('confirmerror', error);
     }
