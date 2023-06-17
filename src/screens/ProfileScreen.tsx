@@ -1,11 +1,13 @@
 import React, {useEffect} from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, Image, StyleSheet} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
-import {AppDispatch, RootState} from '../redux/store';
 import {getMe} from '../redux/store/thunk/AuthThunk';
+import {AppDispatch, RootState} from '../redux/store';
 
 const ProfileScreen = () => {
-  const {secretInfo} = useSelector((state: RootState) => state.authSlice);
+  const secretInfo = useSelector(
+    (state: RootState) => state.authSlice.secretInfo,
+  );
   const dispatch = useDispatch<AppDispatch>();
   useEffect(() => {
     dispatch(getMe());

@@ -17,7 +17,7 @@ const TwoFactorAuthView = ({navigation}: any) => {
   const email = useSelector((state: RootState) => state.authSlice.user.email);
   const dispatch = useDispatch<AppDispatch>();
 
-  const handleConfirm = () => {
+  const confirmHandle = () => {
     dispatch(
       ConfirmUser({
         email: email,
@@ -27,10 +27,11 @@ const TwoFactorAuthView = ({navigation}: any) => {
       if (res) {
         navigation.navigate('Profile');
       } else {
-        Alert.alert('not so fast :3');
+        Alert.alert('something wrong');
       }
     });
   };
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Two-Factor Authentication</Text>
@@ -42,11 +43,11 @@ const TwoFactorAuthView = ({navigation}: any) => {
           style={styles.input}
           placeholder="Enter Code"
           keyboardType="number-pad"
-          maxLength={6}
           value={code}
           onChangeText={setCode}
+          maxLength={6}
         />
-        <TouchableOpacity style={styles.button} onPress={handleConfirm}>
+        <TouchableOpacity style={styles.button} onPress={confirmHandle}>
           <Text style={styles.buttonText}>Submit</Text>
         </TouchableOpacity>
       </View>

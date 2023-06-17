@@ -3,7 +3,6 @@ import {
   StyleSheet,
   Text,
   View,
-  ImageBackground,
   TextInput,
   TouchableOpacity,
 } from 'react-native';
@@ -13,15 +12,18 @@ const LoginScreen = ({navigation}: any) => {
     <View style={styles.container}>
       <View style={styles.card}>
         <TextInput style={styles.input} placeholder="Email" />
+
         <TouchableOpacity style={styles.forgotPasswordButton}>
           <Text style={styles.forgotPasswordButtonText}>Forgot?</Text>
         </TouchableOpacity>
+
         <TouchableOpacity style={styles.button}>
           <Text style={styles.buttonText}>Login</Text>
         </TouchableOpacity>
+
         <TouchableOpacity
           style={styles.createAccountButton}
-          onPress={() => navigation.navigate('register')}>
+          onPress={() => navigation.navigate('Register')}>
           <Text style={styles.createAccountButtonText}>Create Account</Text>
         </TouchableOpacity>
       </View>

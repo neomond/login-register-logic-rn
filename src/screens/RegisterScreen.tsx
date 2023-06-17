@@ -3,7 +3,6 @@ import {
   StyleSheet,
   Text,
   View,
-  ImageBackground,
   TextInput,
   TouchableOpacity,
   ActivityIndicator,
@@ -13,25 +12,23 @@ import {AppDispatch, RootState} from '../redux/store';
 import {Auth} from '../redux/store/thunk/AuthThunk';
 
 const RegisterScreen = ({navigation}: any) => {
-  const loading = useSelector((state: RootState) => state.authSlice.loading);
+  const {loading} = useSelector((state: RootState) => state.authSlice);
   const [email, setEmail] = useState<string>('');
   const dispatch = useDispatch<AppDispatch>();
-
-  const handleRegister = () => {
+  const registerHandler = () => {
     dispatch(Auth(email)).then(res => {
       navigation.navigate('Confirm');
     });
   };
-
   return (
     <View style={styles.container}>
       <View style={styles.card}>
         <TextInput
+          onChangeText={setEmail}
           style={styles.input}
           placeholder="Email"
-          onChangeText={setEmail}
         />
-        <TouchableOpacity style={styles.button} onPress={handleRegister}>
+        <TouchableOpacity style={styles.button} onPress={registerHandler}>
           {loading ? (
             <ActivityIndicator />
           ) : (
