@@ -13,6 +13,7 @@ const Main = () => {
   let dispatch = useDispatch();
   const [loading, setloading] = useState(true);
   //if the token EXISTS and has not expired, dashboard, if expired login page
+
   useEffect(() => {
     tokenCheck().then(res => {
       if (res == true) {
