@@ -4,10 +4,10 @@ import React, {useState} from 'react';
 import {
   View,
   Text,
-  Image,
   TextInput,
   StyleSheet,
   TouchableOpacity,
+  Alert,
 } from 'react-native';
 import {useDispatch} from 'react-redux';
 import {login} from '../../store/loginSlice';
@@ -29,6 +29,13 @@ const ConfirmCodeScreen = ({route}: any) => {
           //bu bölgede global state güncelleyeceğiz ve app.tsx yeniden çalışıp bizi dashbboard redirect edecek!
           dispatch(login());
         });
+      })
+      .catch(err => {
+        if (err.response) {
+          Alert.alert(err.response.data.messsage);
+        } else {
+          Alert.alert('Error!');
+        }
       });
   };
 

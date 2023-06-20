@@ -3,11 +3,10 @@ import React, {useState} from 'react';
 import {
   StyleSheet,
   View,
-  ImageBackground,
-  Image,
   TextInput,
   TouchableOpacity,
   Text,
+  Alert,
 } from 'react-native';
 
 const LoginScreen = ({navigation}: any) => {
@@ -23,6 +22,7 @@ const LoginScreen = ({navigation}: any) => {
       })
       .catch(err => {
         //ekrana uyarı vereceğim ( email or password wrong!)
+        Alert.alert('Email veya şifre hatalı!');
       });
   };
 
@@ -46,6 +46,9 @@ const LoginScreen = ({navigation}: any) => {
             onChangeText={setPassword}
           />
         </View>
+        <TouchableOpacity onPress={() => navigation.navigate('Register')}>
+          <Text>Register</Text>
+        </TouchableOpacity>
         <TouchableOpacity style={styles.loginButton} onPress={handleLogin}>
           <Text style={styles.loginButtonText}>Log In</Text>
         </TouchableOpacity>

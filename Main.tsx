@@ -1,6 +1,5 @@
 import {Text} from 'react-native';
 import React, {useEffect, useState} from 'react';
-
 import {useDispatch, useSelector} from 'react-redux';
 import {RootState} from './src/store/store';
 import {tokenCheck} from './src/util/authHelper';
